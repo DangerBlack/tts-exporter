@@ -1,15 +1,14 @@
 # Table Top Simulator Exporter
 
-This tool is a program to export all your beloved games from within tabletop simulator into your custom server.
+This tool is a program to export all your beloved games from within the tabletop simulator into your custom server.
 
-This tools download all the resource necessary to run the game and replace all the domain provided by third part domain to a custom one provided by you.
-This way you can self host your own resources and avoid that some of them get lost once the legit holder of the right decide to delete them.
+This tool downloads all the resource necessary to run the game and replace all the domain provided by a third-party domain with a custom one provided by you.
+This way you can self-host your own resources and avoid some of them getting lost once the legit holder of the right decides to delete them.
 
-This tools is for backup purpose only, and its provided as is.
+This tool is for backup purposes only, and it's provided as is.
 
 ## Usage
-
-First of all create some folders
+First of all, create some folders
 
 ```
 mkdir output
@@ -18,17 +17,20 @@ mkdir zip
 ```
 
 Now you can run the exporter
+the exporter creates a separate game folder inside of `output` folder.
+each folder represents a game with all of its assets.
+it also provides the `file_name.json`` that contains all the instructions for tts to run the game patched with a special token.
 
 ```
 go run index.go
 ```
 
-the exporter create separate game folder inside of `output` folder.
-each folder represent a game with all of its assets.
+the exporter creates a separate game folder inside of `output` folder.
+each folder represents a game with all of its assets.
 it also provide the `file_name.json` that contains all the instruction for tts to run the game patched with a special token.
 
-all the `file_name.json` got patched with `##EXPORTED_DOMAIN_NAME##/` do if you want to restore the game first of all you have to manually replace 
-all the instance of `##EXPORTED_DOMAIN_NAME##/` with the custom domain folder where the assets are stored like:
+all the `file_name.json` got patched with `##EXPORTED_DOMAIN_NAME##/` so if you want to restore the game first of all you have to manually replace 
+all the instances of `##EXPORTED_DOMAIN_NAME##/` with the custom domain folder where the assets are stored like:
 `##EXPORTED_DOMAIN_NAME##/` -> `https://www.mypersonaldomain.com/tss_backup/game/`
 
 ## Manually restore
@@ -57,8 +59,8 @@ nano ~/.local/share/Tabletop Simulator/Mods/Workshop/WorkshopFileInfos.json
 }
 ```
 
-Program can be run multiple time since skip already downloaded folders.
+The program can be run multiple times since skips already downloaded folders.
 You could check the outcome by looking into the detailed logs of the game.
-Some assets may be lost forever and impossible to backup.
-I suggest you to test incomplete backup to be sure if they works.
+Some assets may be lost forever and impossible to back up.
+I suggest you test incomplete backups to be sure they work.
 
