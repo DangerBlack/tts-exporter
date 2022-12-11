@@ -28,7 +28,7 @@ type Patch struct {
 const NEW_SOURCE_URL = "##EXPORTED_DOMAIN_NAME##/"
 
 func ReadGames() []Element {
-	path := "/home/danger/.local/share/Tabletop Simulator/Mods/Workshop/"
+	path := "~/.local/share/Tabletop Simulator/Mods/Workshop/"
 
 	jsonFile := path + "WorkshopFileInfos.json"
 
