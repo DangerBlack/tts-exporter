@@ -2,7 +2,7 @@
 
 This tool is a program to export all your beloved games from within the tabletop simulator into your custom server.
 
-This tool downloads all the resource necessary to run the game and replace all the domain provided by a third-party domain with a custom one provided by you.
+This tool downloads all the resources necessary to run the game and replace all the domain provided by a third-party domain with a custom one provided by you.
 This way you can self-host your own resources and avoid some of them getting lost once the legit holder of the right decides to delete them.
 
 This tool is for backup purposes only, and it's provided as is.
@@ -22,7 +22,8 @@ each folder represents a game with all of its assets.
 it also provides the `file_name.json`` that contains all the instructions for tts to run the game patched with a special token.
 
 ```
-go run index.go
+go build
+tts-export export "/home/{user}/.local/share/Tabletop Simulator/Mods/Workshop/WorkshopFileInfos.json"
 ```
 
 the exporter creates a separate game folder inside of `output` folder.

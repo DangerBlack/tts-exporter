@@ -27,10 +27,8 @@ type Patch struct {
 
 const NEW_SOURCE_URL = "##EXPORTED_DOMAIN_NAME##/"
 
-func ReadGames() []Element {
-	path := "~/.local/share/Tabletop Simulator/Mods/Workshop/"
-
-	jsonFile := path + "WorkshopFileInfos.json"
+func ReadGames(jsonFile string) []Element {
+	// jsonFile := "home/{user}/.local/share/Tabletop Simulator/Mods/Workshop/WorkshopFileInfos.json"
 
 	body, err := os.ReadFile(jsonFile)
 	if err != nil {
@@ -256,7 +254,19 @@ func removeDuplicates(strList []string) []string {
 }
 
 func main() {
-	elements := ReadGames()
+	usage := "usage: tts-exporter export home/{user}/.local/share/Tabletop Simulator/Mods/Workshop/WorkshopFileInfos.json"
+	action := os.Args[1]
+	jsonFile := os.Args[2]
+
+	if action != "export" {
+		log.Default().Fatalf("actions %s not implemented\n%s", action, usage)
+	}
+
+	if jsonFile == "" {
+		log.Default().Fatalf("json file not provided\n%s", usage)
+	}
+
+	elements := ReadGames(jsonFile)
 
 	log.Default().Printf("found %d games to export", len(elements))
 	for _, element := range elements {
